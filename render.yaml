@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: extracao-infos-pdf-darf
+    env: python
+    # Força Python 3.12 (rapidocr-onnxruntime não suporta Python 3.13)
+    runtime: python-3.12.7
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn wsgi:app --bind 0.0.0.0:$PORT
+    envVars:
+      - key: FLASK_SECRET_KEY
+        sync: false
+      - key: MS_CLIENT_ID
+        sync: false
+        optional: true
+      - key: MS_CLIENT_SECRET
+        sync: false
+        optional: true
+      - key: MS_TENANT_ID
+        sync: false
+        optional: true
+    # Usa PostgreSQL (via DATABASE_URL) - não precisa de volume persistente
+
