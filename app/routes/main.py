@@ -5,7 +5,10 @@ Contém as rotas para a página inicial e upload de arquivos.
 """
 
 import tempfile
+import sys
+import os
 from pathlib import Path
+from datetime import datetime
 from flask import Blueprint, render_template, request, send_file, flash, redirect, url_for
 from werkzeug.utils import secure_filename
 
@@ -147,22 +150,62 @@ def upload_files():
                 registros_patronal.append(linha_formatada)
             # Se aba for None, o registro não será incluído em nenhuma aba
 
-        # Gera o caminho final do arquivo XLSX
-        output_path = temp_dir / "resultado_darfs.xlsx"
-
-        # Gera o Excel
-        gerar_excel(registros_servidor, registros_patronal, todos_erros, output_path)
-
-        # Envia o arquivo para download
-        return send_file(
-            str(output_path),
-            mimetype=(
-                "application/vnd.openxmlformats-officedocument."
-                "spreadsheetml.sheet"
-            ),
-            as_attachment=True,
-            download_name="resultado_darfs.xlsx",
-        )
+        # Detecta se está rodando como executável
+        is_frozen = getattr(sys, 'frozen', False)
+        
+        if is_frozen:
+            # Executável: salva em pasta acessível do usuário
+            # Tenta salvar na pasta Downloads primeiro
+            downloads_dir = Path(os.path.expanduser("~")) / "Downloads"
+            if not downloads_dir.exists():
+                # Fallback para APPDATA se Downloads não existir
+                appdata_dir = Path(os.getenv('APPDATA', '')) / 'ExtratorDARF'
+                appdata_dir.mkdir(exist_ok=True)
+                output_dir = appdata_dir
+            else:
+                output_dir = downloads_dir
+            
+            # Adiciona timestamp ao nome do arquivo para evitar sobrescrever
+            timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+            filename = f"resultado_darfs_{timestamp}.xlsx"
+            output_path = output_dir / filename
+            
+            # Gera o Excel no local acessível
+            gerar_excel(registros_servidor, registros_patronal, todos_erros, output_path)
+            
+            # Informa o usuário onde o arquivo foi salvo
+            flash(
+                f"Arquivo salvo em: {output_path}",
+                "success"
+            )
+            
+            # Ainda envia para download (caso o PyWebView suporte)
+            return send_file(
+                str(output_path),
+                mimetype=(
+                    "application/vnd.openxmlformats-officedocument."
+                    "spreadsheetml.sheet"
+                ),
+                as_attachment=True,
+                download_name=filename,
+            )
+        else:
+            # Desenvolvimento: usa pasta temporária como antes
+            output_path = temp_dir / "resultado_darfs.xlsx"
+            
+            # Gera o Excel
+            gerar_excel(registros_servidor, registros_patronal, todos_erros, output_path)
+            
+            # Envia o arquivo para download
+            return send_file(
+                str(output_path),
+                mimetype=(
+                    "application/vnd.openxmlformats-officedocument."
+                    "spreadsheetml.sheet"
+                ),
+                as_attachment=True,
+                download_name="resultado_darfs.xlsx",
+            )
 
     except Exception as e:
         # Captura qualquer erro inesperado no fluxo geral

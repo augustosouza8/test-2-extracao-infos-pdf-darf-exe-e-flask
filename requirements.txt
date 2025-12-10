@@ -943,3 +943,7 @@ werkzeug==3.1.3 \
     # via
     #   extracao-infos-pdf-darf-flask-web-app
     #   flask
+pywebview>=5.0.0
+    # via extracao-infos-pdf-darf-flask-web-app
+waitress>=3.0.0
+    # via extracao-infos-pdf-darf-flask-web-app

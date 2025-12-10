@@ -5,7 +5,12 @@ Centraliza a lógica de coleta, categorização e formatação de erros
 para a aba de erros do Excel.
 """
 
-from app.database import get_aba_por_codigo, get_uo_por_cnpj
+# Tenta usar a versão direta (sem Flask) primeiro
+try:
+    from app.database.direct import get_aba_por_codigo, get_uo_por_cnpj
+except ImportError:
+    # Fallback para versão Flask (compatibilidade)
+    from app.database import get_aba_por_codigo, get_uo_por_cnpj
 
 
 def coletar_erros_registro(registro: dict) -> list[dict]:

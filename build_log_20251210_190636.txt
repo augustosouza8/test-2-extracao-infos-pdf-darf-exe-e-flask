@@ -1,0 +1,26 @@
+========================================
+Setup para Gerar Executável Windows
+========================================
+
+[1/4] Instalando dependencias...
+
+Atualizando pip...
+
+Instalando PyInstaller...
+Requirement already satisfied: pyinstaller in c:\users\x07300016600\appdata\local\python\pythoncore-3.14-64\lib\site-packages (6.16.0)
+Requirement already satisfied: altgraph in c:\users\x07300016600\appdata\local\python\pythoncore-3.14-64\lib\site-packages (from pyinstaller) (0.17.4)
+Requirement already satisfied: packaging>=22.0 in c:\users\x07300016600\appdata\local\python\pythoncore-3.14-64\lib\site-packages (from pyinstaller) (25.0)
+Requirement already satisfied: pefile!=2024.8.26,>=2022.5.30 in c:\users\x07300016600\appdata\local\python\pythoncore-3.14-64\lib\site-packages (from pyinstaller) (2023.2.7)
+Requirement already satisfied: pyinstaller-hooks-contrib>=2025.8 in c:\users\x07300016600\appdata\local\python\pythoncore-3.14-64\lib\site-packages (from pyinstaller) (2025.9)
+Requirement already satisfied: pywin32-ctypes>=0.2.1 in c:\users\x07300016600\appdata\local\python\pythoncore-3.14-64\lib\site-packages (from pyinstaller) (0.2.3)
+Requirement already satisfied: setuptools>=42.0.0 in c:\users\x07300016600\appdata\local\python\pythoncore-3.14-64\lib\site-packages (from pyinstaller) (80.9.0)
+
+Instalando PyQt6...
+Requirement already satisfied: PyQt6 in c:\users\x07300016600\appdata\local\python\pythoncore-3.14-64\lib\site-packages (6.10.1)
+Requirement already satisfied: PyQt6-sip<14,>=13.8 in c:\users\x07300016600\appdata\local\python\pythoncore-3.14-64\lib\site-packages (from PyQt6) (13.10.3)
+Requirement already satisfied: PyQt6-Qt6<6.11.0,>=6.10.0 in c:\users\x07300016600\appdata\local\python\pythoncore-3.14-64\lib\site-packages (from PyQt6) (6.10.1)
+
+Instalando demais dependencias do projeto...
+
+Verificando onnxruntime (requisito do rapidocr)...
+. foi inesperado neste momento.

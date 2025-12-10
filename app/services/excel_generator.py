@@ -20,7 +20,12 @@ from app.utils.formatters import (
     limpar_data,
 )
 from app.utils.errors import coletar_erros_registro, formatar_linha_erro
-from app.database import get_uo_por_cnpj
+try:
+    # Tenta usar a versão direta (sem Flask) primeiro
+    from app.database.direct import get_uo_por_cnpj
+except ImportError:
+    # Fallback para versão Flask (compatibilidade)
+    from app.database import get_uo_por_cnpj
 
 
 def formatar_linha_patronal_gilrat(registro: dict) -> dict:

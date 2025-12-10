@@ -1,0 +1,109 @@
+================================================================================
+CHECKLIST PARA DISTRIBUIÇÃO DO EXECUTÁVEL
+================================================================================
+
+ANTES DE DISTRIBUIR PARA USUÁRIOS, VERIFIQUE:
+
+□ 1. EXECUTÁVEL GERADO
+   [ ] Arquivo dist\ExtratorDARF.exe existe
+   [ ] Tamanho do arquivo é razoável (150-300 MB)
+   [ ] Arquivo não está corrompido
+
+□ 2. TESTES FUNCIONAIS
+   [ ] Executável abre corretamente
+   [ ] Interface carrega sem erros
+   [ ] Upload de PDF funciona (drag-and-drop e seleção)
+   [ ] Processamento de PDF funciona
+   [ ] Geração de Excel funciona
+   [ ] Arquivo Excel tem as 3 abas (servidor, patronal-gilrat, erros)
+   [ ] Gerenciamento de regras funciona (adicionar/remover)
+   [ ] Banco de dados é criado automaticamente
+
+□ 3. TESTES EM AMBIENTE LIMPO
+   [ ] Testado em computador sem Python instalado
+   [ ] Testado em computador sem dependências
+   [ ] Funciona sem conexão com internet
+   [ ] Primeira execução funciona corretamente
+
+□ 4. DOCUMENTAÇÃO
+   [ ] GUIA_RAPIDO_USUARIO.md incluído (ou convertido para .txt)
+   [ ] Instruções claras para usuários leigos
+   [ ] Troubleshooting documentado
+
+□ 5. SEGURANÇA E COMPATIBILIDADE
+   [ ] Executável não requer privilégios de administrador
+   [ ] Não modifica registro do Windows
+   [ ] Compatível com Windows 10 e 11
+   [ ] Antivírus não bloqueia (testar com Windows Defender)
+
+□ 6. PERFORMANCE
+   [ ] Primeira abertura < 10 segundos
+   [ ] Processamento de PDF razoável (esperado: alguns segundos por PDF)
+   [ ] Interface não trava durante processamento
+   [ ] Memória de uso aceitável (< 500 MB em uso normal)
+
+================================================================================
+PROBLEMAS COMUNS E SOLUÇÕES
+================================================================================
+
+PROBLEMA: Usuário diz que executável não abre
+SOLUÇÃO: 
+  - Verificar se Windows Defender está bloqueando
+  - Verificar se antivírus está bloqueando
+  - Pedir para executar como administrador (teste)
+  - Pedir para verificar mensagens de erro no Event Viewer
+
+PROBLEMA: Erro "módulo não encontrado" ao executar
+SOLUÇÃO:
+  - Regenerar executável com build_exe.bat
+  - Verificar se todos os hidden-imports estão no build_exe.bat
+  - Testar executável no mesmo computador onde foi gerado
+
+PROBLEMA: Processamento muito lento
+SOLUÇÃO:
+  - Normal para PDFs escaneados (OCR é lento)
+  - Explicar que é esperado
+  - Sugerir processar em lotes menores
+
+PROBLEMA: Banco de dados não é criado
+SOLUÇÃO:
+  - Verificar permissões em %APPDATA%
+  - Criar pasta manualmente se necessário
+  - Executar como administrador (teste)
+
+================================================================================
+ARQUIVOS PARA DISTRIBUIR
+================================================================================
+
+MÍNIMO NECESSÁRIO:
+  □ dist\ExtratorDARF.exe
+
+RECOMENDADO:
+  □ dist\ExtratorDARF.exe
+  □ GUIA_RAPIDO_USUARIO.md (ou .txt convertido)
+  □ README_DISTRIBUICAO.md (opcional, para usuários técnicos)
+
+NÃO DISTRIBUIR:
+  □ Código-fonte (.py)
+  □ Pasta app/
+  □ Pasta build/
+  □ Pasta migrations/
+  □ Arquivos .bat (scripts de desenvolvimento)
+  □ requirements.txt ou pyproject.toml
+
+================================================================================
+INSTRUÇÕES PARA USUÁRIOS FINAIS
+================================================================================
+
+1. Copie o arquivo ExtratorDARF.exe para qualquer pasta
+2. Dê duplo clique para executar
+3. Aguarde a janela abrir (pode demorar alguns segundos na primeira vez)
+4. Use a interface normalmente
+5. Não precisa instalar nada ou configurar nada
+
+LOCALIZAÇÃO DOS DADOS:
+  - Configurações: C:\Users\[Usuario]\AppData\Roaming\ExtratorDARF\
+  - Excel gerado: Onde você escolher ao salvar
+
+================================================================================
+

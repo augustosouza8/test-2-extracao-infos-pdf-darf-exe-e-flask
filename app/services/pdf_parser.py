@@ -1,5 +1,6 @@
 import re
 import sys
+import os
 from pathlib import Path
 from datetime import datetime, timedelta
 from decimal import Decimal, InvalidOperation
@@ -98,9 +99,43 @@ def _obter_ocr_reader():
     if _ocr_reader is None:
         try:
             from rapidocr_onnxruntime import RapidOCR
-            _ocr_reader = RapidOCR()
+            
+            # Detecta se está rodando como executável (PyInstaller)
+            is_frozen = getattr(sys, 'frozen', False)
+            
+            if is_frozen:
+                # Executável: usa modelos incorporados
+                base_path = sys._MEIPASS
+                models_dir = os.path.join(base_path, 'ocr_models')
+                
+                # Caminhos dos modelos
+                det_model_path = os.path.join(models_dir, 'ch_PP-OCRv3_det_infer.onnx')
+                rec_model_path = os.path.join(models_dir, 'ch_PP-OCRv3_rec_infer.onnx')
+                cls_model_path = os.path.join(models_dir, 'ch_ppocr_mobile_v2.0_cls_infer.onnx')
+                
+                # Verifica se os modelos existem antes de usar
+                if os.path.exists(det_model_path) and os.path.exists(rec_model_path):
+                    _ocr_reader = RapidOCR(
+                        det_model_path=det_model_path,
+                        rec_model_path=rec_model_path,
+                        cls_model_path=cls_model_path if os.path.exists(cls_model_path) else None
+                    )
+                else:
+                    # Fallback: tenta sem caminhos específicos (pode baixar automaticamente)
+                    _ocr_reader = RapidOCR()
+            else:
+                # Desenvolvimento: usa comportamento padrão
+                _ocr_reader = RapidOCR()
         except ImportError:
             _ocr_reader = False  # Marca como não disponível
+        except Exception as e:
+            # Em caso de erro, tenta sem caminhos específicos
+            try:
+                from rapidocr_onnxruntime import RapidOCR
+                _ocr_reader = RapidOCR()
+            except Exception:
+                _ocr_reader = False
+                print(f"Erro ao inicializar RapidOCR: {e}", file=sys.stderr)
     return _ocr_reader
 
 
@@ -1216,7 +1251,12 @@ def processar_pdf(pdf_path: Path) -> list[dict]:
 # ==========================
 
 # Importa funções do módulo de configuração
-from app.database import get_aba_por_codigo, get_uo_por_cnpj
+try:
+    # Tenta usar a versão direta (sem Flask) primeiro
+    from app.database.direct import get_aba_por_codigo, get_uo_por_cnpj
+except ImportError:
+    # Fallback para versão Flask (compatibilidade)
+    from app.database import get_aba_por_codigo, get_uo_por_cnpj
 
 # Importa funções de formatação do módulo utils
 try:

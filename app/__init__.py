@@ -5,6 +5,7 @@ Centraliza a criação e configuração do app Flask usando o padrão factory.
 """
 
 import os
+import sys
 from pathlib import Path
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
@@ -25,7 +26,8 @@ def get_database_url() -> str:
     
     Prioridade:
     1. DATABASE_URL (PostgreSQL no Azure/Render)
-    2. SQLite local (desenvolvimento)
+    2. SQLite no diretório do usuário (executável)
+    3. SQLite local (desenvolvimento)
     """
     # PostgreSQL (produção)
     database_url = os.getenv("DATABASE_URL")
@@ -35,9 +37,24 @@ def get_database_url() -> str:
             database_url = database_url.replace("postgres://", "postgresql://", 1)
         return database_url
     
-    # SQLite local (desenvolvimento)
-    base_dir = Path(__file__).parent.parent
-    db_path = base_dir / "config.db"
+    # Detecta se está rodando como executável (PyInstaller)
+    is_frozen = getattr(sys, 'frozen', False)
+    
+    if is_frozen:
+        # Executável: usa diretório de dados do usuário
+        appdata_dir = os.getenv('APPDATA')
+        if not appdata_dir:
+            # Fallback se APPDATA não estiver definido
+            appdata_dir = os.path.expanduser('~')
+        
+        data_dir = os.path.join(appdata_dir, 'ExtratorDARF')
+        os.makedirs(data_dir, exist_ok=True)
+        db_path = os.path.join(data_dir, 'config.db')
+    else:
+        # Desenvolvimento: usa diretório do projeto
+        base_dir = Path(__file__).parent.parent
+        db_path = base_dir / "config.db"
+    
     return f"sqlite:///{db_path}"
 
 
@@ -80,6 +97,16 @@ def create_app(config_class=Config):
     
     # Importa modelos após inicializar db para registro correto
     from app import models  # noqa: F401
+    
+    # Se for executável, inicializa banco automaticamente se não existir
+    is_frozen = getattr(sys, 'frozen', False)
+    if is_frozen:
+        with app.app_context():
+            try:
+                db.create_all()
+            except Exception:
+                # Ignora erros se tabelas já existirem
+                pass
     
     # Registra blueprints
     app.register_blueprint(main.bp)

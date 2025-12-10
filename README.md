@@ -1,3 +1,37 @@
+# Lições aprendidas 
+
+"Com PyInstaller é possível gerar arquivos .exe que posteriormente podem ser repassados para máquinas de usuários leigos; a primeira opção é usá-lo para criar um .exe que força a abertura do navegador do usuário, desta forma ele "simula" vc rodar o código de python numa IDE e abrir o app Flask localmente no navegador do usuário; a segunda opção seria utilizar o PyInstaller com o PyWebview, este basicamente simula um navegador web em uma janela própria, "escondendo a barra de endereços, botões de voltar ou favoritos, parece um aplicativo nativo". Já a combinação do PyInstaller com PyQt6 permite você tanto simular um navegador web com cara de aplicativo (mas nesse caso vc utiliza a biblioteca Qt WebEngine para renderizar o Flask ao invês do PyWebview), quanto criar um aplicativo nativo de windows, semelhante a biblioteca Tkinter, mas com mais possibilidades"
+
+
+# Resumo: Estratégias para Converter Web App (Flask) em Executável (.exe)
+
+O objetivo principal é utilizar o **PyInstaller** para empacotar a aplicação Python e suas dependências. Isso gera arquivos `.exe` (standalone) que permitem a distribuição para usuários leigos sem necessidade de instalação de Python, Docker ou acesso à nuvem.
+
+Abaixo, as três abordagens discutidas para a interface do usuário:
+
+### 1. PyInstaller + Navegador Padrão (A abordagem simples)
+Neste modelo, o `.exe` atua como um servidor local silencioso. Ao ser executado, ele inicia o backend Flask e força a abertura automática do navegador padrão do usuário (Chrome, Edge, etc.) na URL local.
+* **Experiência:** Simula o comportamento de desenvolvimento (rodar o script e abrir o browser), mas empacotado.
+* **Vantagem:** Simplicidade máxima e tamanho de arquivo reduzido.
+* **Desvantagem:** O usuário percebe que está em um site e a gestão do fechamento do app é menos intuitiva.
+
+### 2. PyInstaller + PyWebview (A abordagem recomendada)
+Esta opção utiliza a biblioteca **PyWebview** para criar uma janela nativa do sistema operacional que "encapsula" o site.
+* **Experiência:** Simula um aplicativo nativo, escondendo elementos de navegador como barra de endereços, botões de voltar ou favoritos.
+* **Vantagem:** Oferece uma experiência de software desktop profissional com baixo custo de performance e tamanho, pois utiliza o motor de renderização já existente no Windows (WebView2).
+* **Destaque:** É o melhor equilíbrio entre esforço de desenvolvimento e resultado visual.
+
+### 3. PyInstaller + PyQt6 (A abordagem robusta)
+O PyQt6 é um framework completo para interfaces gráficas. Ele pode ser usado de duas formas:
+* **Modo Wrapper (QtWebEngine):** Similar ao PyWebview, usa o componente de navegador do Qt para renderizar o Flask. Porém, traz um motor de navegador próprio embutido, o que aumenta significativamente o tamanho do arquivo final, mas garante consistência total de renderização.
+* **Modo Nativo (Reescrita):** Permite criar interfaces 100% nativas (janelas, botões e tabelas do sistema), similar ao Tkinter, mas com visual e recursos muito superiores. Exige reescrever o front-end, abandonando o HTML/CSS.
+
+---
+**Notas Técnicas Importantes para o Build:**
+* **Persistência (SQLite):** É necessário configurar o caminho do banco de dados para uma pasta fixa do usuário (ex: `%APPDATA%`), evitando que os dados sejam apagados ao fechar o `.exe` (que roda em pasta temporária).
+* **OCR Offline:** Para bibliotecas como RapidOCR, os modelos `.onnx` devem ser baixados previamente e incluídos dentro do executável para garantir funcionamento offline.
+
+
 # Extrator de Informações DARF
 
 Aplicação Flask para extrair informações de PDFs de DARF e gerar arquivos Excel consolidados.

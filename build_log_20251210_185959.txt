@@ -1,0 +1,250 @@
+========================================
+Setup para Gerar ExecutÃ¡vel Windows
+========================================
+
+[1/4] Instalando dependencias...
+
+Atualizando pip...
+
+Instalando PyInstaller...
+Requirement already satisfied: pyinstaller in c:\users\x07300016600\appdata\local\python\pythoncore-3.14-64\lib\site-packages (6.16.0)
+Requirement already satisfied: altgraph in c:\users\x07300016600\appdata\local\python\pythoncore-3.14-64\lib\site-packages (from pyinstaller) (0.17.4)
+Requirement already satisfied: packaging>=22.0 in c:\users\x07300016600\appdata\local\python\pythoncore-3.14-64\lib\site-packages (from pyinstaller) (25.0)
+Requirement already satisfied: pefile!=2024.8.26,>=2022.5.30 in c:\users\x07300016600\appdata\local\python\pythoncore-3.14-64\lib\site-packages (from pyinstaller) (2023.2.7)
+Requirement already satisfied: pyinstaller-hooks-contrib>=2025.8 in c:\users\x07300016600\appdata\local\python\pythoncore-3.14-64\lib\site-packages (from pyinstaller) (2025.9)
+Requirement already satisfied: pywin32-ctypes>=0.2.1 in c:\users\x07300016600\appdata\local\python\pythoncore-3.14-64\lib\site-packages (from pyinstaller) (0.2.3)
+Requirement already satisfied: setuptools>=42.0.0 in c:\users\x07300016600\appdata\local\python\pythoncore-3.14-64\lib\site-packages (from pyinstaller) (80.9.0)
+
+Instalando PyQt6...
+Requirement already satisfied: PyQt6 in c:\users\x07300016600\appdata\local\python\pythoncore-3.14-64\lib\site-packages (6.10.1)
+Requirement already satisfied: PyQt6-sip<14,>=13.8 in c:\users\x07300016600\appdata\local\python\pythoncore-3.14-64\lib\site-packages (from PyQt6) (13.10.3)
+Requirement already satisfied: PyQt6-Qt6<6.11.0,>=6.10.0 in c:\users\x07300016600\appdata\local\python\pythoncore-3.14-64\lib\site-packages (from PyQt6) (6.10.1)
+
+Instalando demais dependencias do projeto...
+
+Instalando onnxruntime primeiro (requisito do rapidocr)...
+ERROR: Could not find a version that satisfies the requirement onnxruntime (from versions: none)
+ERROR: No matching distribution found for onnxruntime
+
+Instalando dependencias principais...
+Requirement already satisfied: pdfplumber in c:\users\x07300016600\appdata\local\python\pythoncore-3.14-64\lib\site-packages (0.11.8)
+Requirement already satisfied: pandas in c:\users\x07300016600\appdata\local\python\pythoncore-3.14-64\lib\site-packages (2.3.3)
+Requirement already satisfied: openpyxl in c:\users\x07300016600\appdata\local\python\pythoncore-3.14-64\lib\site-packages (3.1.5)
+Requirement already satisfied: sqlalchemy in c:\users\x07300016600\appdata\local\python\pythoncore-3.14-64\lib\site-packages (2.0.45)
+Requirement already satisfied: pillow in c:\users\x07300016600\appdata\local\python\pythoncore-3.14-64\lib\site-packages (12.0.0)
+Collecting opencv-python-headless
+  Using cached opencv_python_headless-4.12.0.88-cp37-abi3-win_amd64.whl.metadata (20 kB)
+Requirement already satisfied: numpy in c:\users\x07300016600\appdata\local\python\pythoncore-3.14-64\lib\site-packages (2.3.4)
+Collecting shapely
+  Using cached shapely-2.1.2-cp314-cp314-win_amd64.whl.metadata (7.1 kB)
+Collecting pyclipper
+  Using cached pyclipper-1.4.0-cp314-cp314-win_amd64.whl.metadata (8.8 kB)
+Collecting pyyaml
+  Using cached pyyaml-6.0.3-cp314-cp314-win_amd64.whl.metadata (2.4 kB)
+Requirement already satisfied: pdfminer.six==20251107 in c:\users\x07300016600\appdata\local\python\pythoncore-3.14-64\lib\site-packages (from pdfplumber) (20251107)
+Requirement already satisfied: pypdfium2>=4.18.0 in c:\users\x07300016600\appdata\local\python\pythoncore-3.14-64\lib\site-packages (from pdfplumber) (5.0.0)
+Requirement already satisfied: charset-normalizer>=2.0.0 in c:\users\x07300016600\appdata\local\python\pythoncore-3.14-64\lib\site-packages (from pdfminer.six==20251107->pdfplumber) (3.4.4)
+Requirement already satisfied: cryptography>=36.0.0 in c:\users\x07300016600\appdata\local\python\pythoncore-3.14-64\lib\site-packages (from pdfminer.six==20251107->pdfplumber) (46.0.3)
+Requirement already satisfied: python-dateutil>=2.8.2 in c:\users\x07300016600\appdata\local\python\pythoncore-3.14-64\lib\site-packages (from pandas) (2.9.0.post0)
+Requirement already satisfied: pytz>=2020.1 in c:\users\x07300016600\appdata\local\python\pythoncore-3.14-64\lib\site-packages (from pandas) (2025.2)
+Requirement already satisfied: tzdata>=2022.7 in c:\users\x07300016600\appdata\local\python\pythoncore-3.14-64\lib\site-packages (from pandas) (2025.2)
+Requirement already satisfied: et-xmlfile in c:\users\x07300016600\appdata\local\python\pythoncore-3.14-64\lib\site-packages (from openpyxl) (2.0.0)
+Requirement already satisfied: greenlet>=1 in c:\users\x07300016600\appdata\local\python\pythoncore-3.14-64\lib\site-packages (from sqlalchemy) (3.3.0)
+Requirement already satisfied: typing-extensions>=4.6.0 in c:\users\x07300016600\appdata\local\python\pythoncore-3.14-64\lib\site-packages (from sqlalchemy) (4.15.0)
+Collecting numpy
+  Using cached numpy-2.2.6.tar.gz (20.3 MB)
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'done'
+  Getting requirements to build wheel: started
+  Getting requirements to build wheel: finished with status 'done'
+  Installing backend dependencies: started
+  Installing backend dependencies: finished with status 'done'
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'error'
+  error: subprocess-exited-with-error
+  
+  Preparing metadata (pyproject.toml) did not run successfully.
+  exit code: 1
+  
+  [21 lines of output]
+  + C:\Users\X07300016600\AppData\Local\Python\pythoncore-3.14-64\python.exe C:\Users\X07300016600\AppData\Local\Temp\pip-install-nb5ns2ty\numpy_3c6c865b69b54ccd94321b764e3f961f\vendored-meson\meson\meson.py setup C:\Users\X07300016600\AppData\Local\Temp\pip-install-nb5ns2ty\numpy_3c6c865b69b54ccd94321b764e3f961f C:\Users\X07300016600\AppData\Local\Temp\pip-install-nb5ns2ty\numpy_3c6c865b69b54ccd94321b764e3f961f\.mesonpy-9zepe7fg -Dbuildtype=release -Db_ndebug=if-release -Db_vscrt=md --native-file=C:\Users\X07300016600\AppData\Local\Temp\pip-install-nb5ns2ty\numpy_3c6c865b69b54ccd94321b764e3f961f\.mesonpy-9zepe7fg\meson-python-native-file.ini
+  The Meson build system
+  Version: 1.5.2
+  Source dir: C:\Users\X07300016600\AppData\Local\Temp\pip-install-nb5ns2ty\numpy_3c6c865b69b54ccd94321b764e3f961f
+  Build dir: C:\Users\X07300016600\AppData\Local\Temp\pip-install-nb5ns2ty\numpy_3c6c865b69b54ccd94321b764e3f961f\.mesonpy-9zepe7fg
+  Build type: native build
+  Project name: NumPy
+  Project version: 2.2.6
+  WARNING: Failed to activate VS environment: Could not find C:\Program Files (x86)\Microsoft Visual Studio\Installer\vswhere.exe
+  
+  ..\meson.build:1:0: ERROR: Unknown compiler(s): [['icl'], ['cl'], ['cc'], ['gcc'], ['clang'], ['clang-cl'], ['pgcc']]
+  The following exception(s) were encountered:
+  Running `icl ""` gave "[WinError 2] O sistema não pode encontrar o arquivo especificado"
+  Running `cl /?` gave "[WinError 2] O sistema não pode encontrar o arquivo especificado"
+  Running `cc --version` gave "[WinError 2] O sistema não pode encontrar o arquivo especificado"
+  Running `gcc --version` gave "[WinError 2] O sistema não pode encontrar o arquivo especificado"
+  Running `clang --version` gave "[WinError 2] O sistema não pode encontrar o arquivo especificado"
+  Running `clang-cl /?` gave "[WinError 2] O sistema não pode encontrar o arquivo especificado"
+  Running `pgcc --version` gave "[WinError 2] O sistema não pode encontrar o arquivo especificado"
+  
+  A full log can be found at C:\Users\X07300016600\AppData\Local\Temp\pip-install-nb5ns2ty\numpy_3c6c865b69b54ccd94321b764e3f961f\.mesonpy-9zepe7fg\meson-logs\meson-log.txt
+  [end of output]
+  
+  note: This error originates from a subprocess, and is likely not a problem with pip.
+error: metadata-generation-failed
+
+Encountered error while generating package metadata.
+
+numpy
+
+note: This is an issue with the package mentioned above, not pip.
+hint: See above for details.
+AVISO: Algumas dependencias podem ter falhado, mas continuando...
+
+Instalando rapidocr-onnxruntime...
+Collecting rapidocr-onnxruntime<1.3.0,>=1.2.0
+  Using cached rapidocr_onnxruntime-1.2.3-py3-none-any.whl.metadata (4.8 kB)
+Collecting pyclipper>=1.2.1 (from rapidocr-onnxruntime<1.3.0,>=1.2.0)
+  Using cached pyclipper-1.4.0-cp314-cp314-win_amd64.whl.metadata (8.8 kB)
+INFO: pip is looking at multiple versions of rapidocr-onnxruntime to determine which version is compatible with other requirements. This could take a while.
+Collecting rapidocr-onnxruntime<1.3.0,>=1.2.0
+  Using cached rapidocr_onnxruntime-1.2.2-py3-none-any.whl.metadata (4.7 kB)
+  Using cached rapidocr_onnxruntime-1.2.1-py3-none-any.whl.metadata (4.7 kB)
+  Using cached rapidocr_onnxruntime-1.2.0-py3-none-any.whl.metadata (4.7 kB)
+ERROR: Cannot install rapidocr-onnxruntime==1.2.0, rapidocr-onnxruntime==1.2.1, rapidocr-onnxruntime==1.2.2 and rapidocr-onnxruntime==1.2.3 because these package versions have conflicting dependencies.
+
+The conflict is caused by:
+    rapidocr-onnxruntime 1.2.3 depends on onnxruntime>=1.7.0
+    rapidocr-onnxruntime 1.2.2 depends on onnxruntime>=1.7.0
+    rapidocr-onnxruntime 1.2.1 depends on onnxruntime>=1.7.0
+    rapidocr-onnxruntime 1.2.0 depends on onnxruntime>=1.7.0
+
+Additionally, some packages in these conflicts have no matching distributions available for your environment:
+    onnxruntime
+
+To fix this you could try to:
+1. loosen the range of package versions you've specified
+2. remove package versions to allow pip to attempt to solve the dependency conflict
+
+ERROR: ResolutionImpossible: for help visit https://pip.pypa.io/en/latest/topics/dependency-resolution/#dealing-with-dependency-conflicts
+Tentando versao mais antiga...
+Collecting rapidocr-onnxruntime>=1.1.0
+  Using cached rapidocr_onnxruntime-1.2.3-py3-none-any.whl.metadata (4.8 kB)
+Collecting pyclipper>=1.2.1 (from rapidocr-onnxruntime>=1.1.0)
+  Using cached pyclipper-1.4.0-cp314-cp314-win_amd64.whl.metadata (8.8 kB)
+INFO: pip is looking at multiple versions of rapidocr-onnxruntime to determine which version is compatible with other requirements. This could take a while.
+Collecting rapidocr-onnxruntime>=1.1.0
+  Using cached rapidocr_onnxruntime-1.2.2-py3-none-any.whl.metadata (4.7 kB)
+  Using cached rapidocr_onnxruntime-1.2.1-py3-none-any.whl.metadata (4.7 kB)
+  Using cached rapidocr_onnxruntime-1.2.0-py3-none-any.whl.metadata (4.7 kB)
+  Using cached rapidocr_onnxruntime-1.1.30-py3-none-any.whl.metadata (2.3 kB)
+  Using cached rapidocr_onnxruntime-1.1.29-py3-none-any.whl.metadata (2.3 kB)
+  Using cached rapidocr_onnxruntime-1.1.28-py3-none-any.whl.metadata (2.2 kB)
+  Using cached rapidocr_onnxruntime-1.1.27-py3-none-any.whl.metadata (1.6 kB)
+INFO: pip is still looking at multiple versions of rapidocr-onnxruntime to determine which version is compatible with other requirements. This could take a while.
+  Using cached rapidocr_onnxruntime-1.1.26-py3-none-any.whl.metadata (1.6 kB)
+  Using cached rapidocr_onnxruntime-1.1.25-py3-none-any.whl.metadata (1.6 kB)
+  Using cached rapidocr_onnxruntime-1.1.24-py3-none-any.whl.metadata (1.6 kB)
+Collecting PyYAML (from rapidocr-onnxruntime>=1.1.0)
+  Using cached pyyaml-6.0.3-cp314-cp314-win_amd64.whl.metadata (2.4 kB)
+Collecting Shapely>=1.7.1 (from rapidocr-onnxruntime>=1.1.0)
+  Using cached shapely-2.1.2-cp314-cp314-win_amd64.whl.metadata (7.1 kB)
+Requirement already satisfied: numpy>=1.19.3 in c:\users\x07300016600\appdata\local\python\pythoncore-3.14-64\lib\site-packages (from rapidocr-onnxruntime>=1.1.0) (2.3.4)
+Collecting rapidocr-onnxruntime>=1.1.0
+  Using cached rapidocr_onnxruntime-1.1.23-py3-none-any.whl.metadata (1.6 kB)
+  Using cached rapidocr_onnxruntime-1.1.22-py3-none-any.whl.metadata (1.6 kB)
+INFO: This is taking longer than usual. You might need to provide the dependency resolver with stricter constraints to reduce runtime. See https://pip.pypa.io/warnings/backtracking for guidance. If you want to abort this run, press Ctrl + C.
+  Using cached rapidocr_onnxruntime-1.1.21-py3-none-any.whl.metadata (1.6 kB)
+  Using cached rapidocr_onnxruntime-1.1.20-py3-none-any.whl.metadata (1.5 kB)
+  Using cached rapidocr_onnxruntime-1.1.19-py3-none-any.whl.metadata (1.5 kB)
+  Using cached rapidocr_onnxruntime-1.1.18-py3-none-any.whl.metadata (1.5 kB)
+  Using cached rapidocr_onnxruntime-1.1.17-py3-none-any.whl.metadata (1.5 kB)
+  Using cached rapidocr_onnxruntime-1.1.16-py3-none-any.whl.metadata (1.5 kB)
+  Using cached rapidocr_onnxruntime-1.1.15-py3-none-any.whl.metadata (1.5 kB)
+  Using cached rapidocr_onnxruntime-1.1.14-py3-none-any.whl.metadata (1.3 kB)
+  Using cached rapidocr_onnxruntime-1.1.13-py3-none-any.whl.metadata (2.1 kB)
+  Using cached rapidocr_onnxruntime-1.1.12-py3-none-any.whl.metadata (2.1 kB)
+  Using cached rapidocr_onnxruntime-1.1.11-py3-none-any.whl.metadata (2.1 kB)
+  Using cached rapidocr_onnxruntime-1.1.10-py3-none-any.whl.metadata (2.1 kB)
+  Using cached rapidocr_onnxruntime-1.1.9-py3-none-any.whl.metadata (1.8 kB)
+  Using cached rapidocr_onnxruntime-1.1.8-py3-none-any.whl.metadata (1.8 kB)
+  Using cached rapidocr_onnxruntime-1.1.7-py3-none-any.whl.metadata (1.8 kB)
+  Using cached rapidocr_onnxruntime-1.1.6-py3-none-any.whl.metadata (1.8 kB)
+  Using cached rapidocr_onnxruntime-1.1.5-py3-none-any.whl.metadata (1.8 kB)
+  Using cached rapidocr_onnxruntime-1.1.4-py3-none-any.whl.metadata (1.8 kB)
+  Using cached rapidocr_onnxruntime-1.1.3-py3-none-any.whl.metadata (1.8 kB)
+  Using cached rapidocr_onnxruntime-1.1.2-py3-none-any.whl.metadata (1.8 kB)
+  Using cached rapidocr_onnxruntime-1.1.1-py3-none-any.whl.metadata (1.8 kB)
+  Using cached rapidocr_onnxruntime-1.1.0-py3-none-any.whl.metadata (1.7 kB)
+ERROR: Cannot install rapidocr-onnxruntime==1.1.0, rapidocr-onnxruntime==1.1.1, rapidocr-onnxruntime==1.1.10, rapidocr-onnxruntime==1.1.11, rapidocr-onnxruntime==1.1.12, rapidocr-onnxruntime==1.1.13, rapidocr-onnxruntime==1.1.14, rapidocr-onnxruntime==1.1.15, rapidocr-onnxruntime==1.1.16, rapidocr-onnxruntime==1.1.17, rapidocr-onnxruntime==1.1.18, rapidocr-onnxruntime==1.1.19, rapidocr-onnxruntime==1.1.2, rapidocr-onnxruntime==1.1.20, rapidocr-onnxruntime==1.1.21, rapidocr-onnxruntime==1.1.22, rapidocr-onnxruntime==1.1.23, rapidocr-onnxruntime==1.1.24, rapidocr-onnxruntime==1.1.25, rapidocr-onnxruntime==1.1.26, rapidocr-onnxruntime==1.1.27, rapidocr-onnxruntime==1.1.28, rapidocr-onnxruntime==1.1.29, rapidocr-onnxruntime==1.1.3, rapidocr-onnxruntime==1.1.30, rapidocr-onnxruntime==1.1.4, rapidocr-onnxruntime==1.1.5, rapidocr-onnxruntime==1.1.6, rapidocr-onnxruntime==1.1.7, rapidocr-onnxruntime==1.1.8, rapidocr-onnxruntime==1.1.9, rapidocr-onnxruntime==1.2.0, rapidocr-onnxruntime==1.2.1, rapidocr-onnxruntime==1.2.2 and rapidocr-onnxruntime==1.2.3 because these package versions have conflicting dependencies.
+
+The conflict is caused by:
+    rapidocr-onnxruntime 1.2.3 depends on onnxruntime>=1.7.0
+    rapidocr-onnxruntime 1.2.2 depends on onnxruntime>=1.7.0
+    rapidocr-onnxruntime 1.2.1 depends on onnxruntime>=1.7.0
+    rapidocr-onnxruntime 1.2.0 depends on onnxruntime>=1.7.0
+    rapidocr-onnxruntime 1.1.30 depends on onnxruntime>=1.7.0
+    rapidocr-onnxruntime 1.1.29 depends on onnxruntime>=1.7.0
+    rapidocr-onnxruntime 1.1.28 depends on onnxruntime>=1.7.0
+    rapidocr-onnxruntime 1.1.27 depends on onnxruntime>=1.7.0
+    rapidocr-onnxruntime 1.1.26 depends on onnxruntime>=1.7.0
+    rapidocr-onnxruntime 1.1.25 depends on onnxruntime>=1.7.0
+    rapidocr-onnxruntime 1.1.24 depends on onnxruntime>=1.7.0
+    rapidocr-onnxruntime 1.1.23 depends on onnxruntime>=1.7.0
+    rapidocr-onnxruntime 1.1.22 depends on onnxruntime>=1.7.0
+    rapidocr-onnxruntime 1.1.21 depends on onnxruntime>=1.7.0
+    rapidocr-onnxruntime 1.1.20 depends on onnxruntime>=1.7.0
+    rapidocr-onnxruntime 1.1.19 depends on onnxruntime>=1.7.0
+    rapidocr-onnxruntime 1.1.18 depends on onnxruntime>=1.7.0
+    rapidocr-onnxruntime 1.1.17 depends on onnxruntime>=1.7.0
+    rapidocr-onnxruntime 1.1.16 depends on onnxruntime>=1.7.0
+    rapidocr-onnxruntime 1.1.15 depends on onnxruntime>=1.7.0
+    rapidocr-onnxruntime 1.1.14 depends on onnxruntime>=1.7.0
+    rapidocr-onnxruntime 1.1.13 depends on onnxruntime>=1.7.0
+    rapidocr-onnxruntime 1.1.12 depends on onnxruntime>=1.7.0
+    rapidocr-onnxruntime 1.1.11 depends on onnxruntime>=1.7.0
+    rapidocr-onnxruntime 1.1.10 depends on onnxruntime>=1.7.0
+    rapidocr-onnxruntime 1.1.9 depends on onnxruntime
+    rapidocr-onnxruntime 1.1.8 depends on onnxruntime
+    rapidocr-onnxruntime 1.1.7 depends on onnxruntime
+    rapidocr-onnxruntime 1.1.6 depends on onnxruntime
+    rapidocr-onnxruntime 1.1.5 depends on onnxruntime
+    rapidocr-onnxruntime 1.1.4 depends on onnxruntime
+    rapidocr-onnxruntime 1.1.3 depends on onnxruntime
+    rapidocr-onnxruntime 1.1.2 depends on onnxruntime
+    rapidocr-onnxruntime 1.1.1 depends on onnxruntime
+    rapidocr-onnxruntime 1.1.0 depends on onnxruntime
+
+Additionally, some packages in these conflicts have no matching distributions available for your environment:
+    onnxruntime
+
+To fix this you could try to:
+1. loosen the range of package versions you've specified
+2. remove package versions to allow pip to attempt to solve the dependency conflict
+
+ERROR: ResolutionImpossible: for help visit https://pip.pypa.io/en/latest/topics/dependency-resolution/#dealing-with-dependency-conflicts
+AVISO: Falha ao instalar rapidocr-onnxruntime, mas continuando...
+O executavel pode nao ter suporte completo a OCR se isso falhar.
+Os modelos OCR podem ainda funcionar se ja estiverem baixados.
+
+[2/4] Verificando instalacao do PyQt6...
+
+[OK] PyQt6 instalado: 6.10.1
+
+[3/4] Baixando modelos OCR...
+
+Metodo 1: Tentando baixar modelos diretamente...
+Diretório de modelos: C:\Users\X07300016600\cursor-projects\test-2-extracao-infos-pdf-darf-exe-e-flask\ocr_models
+
+Traceback (most recent call last):
+  File "C:\Users\X07300016600\cursor-projects\test-2-extracao-infos-pdf-darf-exe-e-flask\download_models_simples.py", line 99, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\X07300016600\cursor-projects\test-2-extracao-infos-pdf-darf-exe-e-flask\download_models_simples.py", line 64, in main
+    print(f"\u2713 {model_name} já existe ({size_mb:.1f} MB)")
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\X07300016600\AppData\Local\Python\pythoncore-3.14-64\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\u2713' in position 0: character maps to <undefined>
+... foi inesperado neste momento.
